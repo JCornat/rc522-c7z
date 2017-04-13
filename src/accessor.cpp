@@ -21,8 +21,9 @@ int loopCounter;
 
 using namespace v8;
 
-Handle<Value> RunCallback(const Arguments& args) {
-    HandleScope scope;
+void RunCallback(const FunctionCallbackInfo<Value>& args) {
+    Isolate* isolate = Isolate::GetCurrent();
+    HandleScope scope(isolate);
 
     Local<Function> callback = Local<Function>::Cast(args[0]);
     const unsigned argc = 1;
@@ -64,9 +65,12 @@ Handle<Value> RunCallback(const Arguments& args) {
 
         // Only when the serial number of the currently detected tag differs from the
         // recently detected tag the callback will be executed with the serial number
-        if(strcmp(rfidChipSerialNumberRecentlyDetected, rfidChipSerialNumber) != 0) {
-            Local<Value> argv[argc] = { Local<Value>::New(String::New(&rfidChipSerialNumber[1])) };
-            callback->Call(Context::GetCurrent()->Global(), argc, argv);
+        if (strcmp(rfidChipSerialNumberRecentlyDetected, rfidChipSerialNumber) != 0) {
+            Local<Value> argv[argc] = {
+                String::NewFromUtf8(isolate, &rfidChipSerialNumber[0])
+            };
+
+            callback->Call(isolate->GetCurrentContext()->Global(), argc, argv);
         }
 
         // Preserves the current detected serial number, so that it can be used
@@ -78,13 +82,11 @@ Handle<Value> RunCallback(const Arguments& args) {
 
     bcm2835_spi_end();
     bcm2835_close();
-
-    return scope.Close(Undefined());
 }
 
 void Init(Handle<Object> exports, Handle<Object> module) {
     initRfidReader();
-    module->Set(String::NewSymbol("exports"), FunctionTemplate::New(RunCallback)->GetFunction());
+    NODE_SET_METHOD(module, "exports", RunCallback);
 }
 
 uint8_t initRfidReader(void) {
