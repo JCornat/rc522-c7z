@@ -62,7 +62,7 @@ rc522((serial) => {
 });
 ```
 
-## For TypeScript
+### For TypeScript
 ```
 import * as rc522 from 'rc522-c7z';
 
