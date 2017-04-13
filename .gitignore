@@ -1,0 +1,7 @@
+.idea
+.sass-cache
+node_modules
+
+#TypeScript generation
+*.js
+*.js.map
