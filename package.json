@@ -1,7 +1,14 @@
 {
-  "name": "lol",
+  "name": "rc522-c7z",
   "version": "0.0.1",
   "main": "index.js",
+  "keywords": [
+    "rc522",
+    "rfid",
+    "c7z",
+    "cornat",
+    "jcornat"
+  ],
   "scripts": {
     "install": "(node-gyp rebuild) || (exit 0)",
     "preinstall": "(node-gyp configure) || (exit 0)",
