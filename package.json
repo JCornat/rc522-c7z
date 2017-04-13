@@ -2,6 +2,7 @@
   "name": "rc522-c7z",
   "version": "0.0.1",
   "main": "index.js",
+  "description": "Node.js package for Rapsberry Pi & RC522 RFID Reader combo, with TypeScript support",
   "keywords": [
     "rc522",
     "rfid",
@@ -17,5 +18,11 @@
   },
   "dependencies": {
     "@types/node": "^7.0.12"
-  }
+  },
+  "author": "Jacques Cornat",
+  "license": "CC-BY-4.0",
+  "bugs": {
+    "url": "https://github.com/JCornat/node-logger/issues"
+  },
+  "homepage": "https://github.com/JCornat/node-logger#readme"
 }
