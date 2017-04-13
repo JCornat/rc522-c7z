@@ -40,9 +40,9 @@ npm install -g node-gyp
 
 - Install Broadcom BCM 2835 library
 ```
-wget http://www.airspayce.com/mikem/bcm2835/bcm2835-1.35.tar.gz
-tar -zxf bcm2835-1.35.tar.gz
-cd bcm2835-1.35
+wget http://www.airspayce.com/mikem/bcm2835/bcm2835-1.52.tar.gz
+tar -zxf bcm2835-1.52.tar.gz
+cd bcm2835-1.52
 ./configure
 sudo make install
 ```
