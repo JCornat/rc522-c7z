@@ -9,16 +9,16 @@ Package entirely based on [ocsacesar](https://github.com/ocsacesar/rc522) and [s
 
 ## Installation
 - Plug RFID Reader to Raspberry Pi according to this table :
-
-|RFID Pin|Raspberry Pi Pin|
-|:------:|:--------------:|
-|1 (3.3V)|1               |
-|2 (RST) |22              |
-|3 (GND) |25              |
-|5 (MISO)|21              |
-|6 (MOSI)|19              |
-|7 (SCK) |23              |
-|8 (SDA) |24              |
+```
+ RFID Reader Pin  <->  Raspberry Pi Pin 
+     1 (3.3V)      |         1           
+     2 (RST)       |         22          
+     3 (GND)       |         25          
+     5 (MISO)      |         21          
+     6 (MOSI)      |         19          
+     7 (SCK)       |         23          
+     8 (SDA)       |         24          
+```
 
 - Install GCC compiler 
 ```
