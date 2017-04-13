@@ -5,7 +5,7 @@
       "sources": [
         "src/rc522.c",
         "src/rfid.c",
-        "src/accessor.c"
+        "src/accessor.cpp"
       ],
       "libraries": [
         "-lbcm2835"
