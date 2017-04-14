@@ -9,7 +9,6 @@ uint8_t debug = 0;
 
 void InitRc522(void)
 {
-	printf("InitRc522");
 	PcdReset();
 	PcdAntennaOn();
 }
