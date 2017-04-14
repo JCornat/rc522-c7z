@@ -64,7 +64,7 @@ rc522((serial) => {
 
 ### For TypeScript
 ```
-import * as rc522 from 'rc522-c7z';
+import rc522 from 'rc522-c7z';
 
 rc522((serial) => {
 	console.log(serial);
