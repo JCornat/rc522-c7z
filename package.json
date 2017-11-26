@@ -1,6 +1,6 @@
 {
   "name": "rc522-c7z",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Node.js package for Rapsberry Pi & RC522 RFID Reader combo, with TypeScript support",
   "main": "index.js",
   "repository": {
