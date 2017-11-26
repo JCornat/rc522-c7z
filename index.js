@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const child_process_1 = require("child_process");
 const path = require("path");
 const readline = require("readline");
-const child_process_1 = require("child_process");
 let registeredCallback = null;
 let child = null;
 let mainProcessShutdown = false;
