@@ -1,22 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const child_process_1 = require("child_process");
+const path = require("path");
 const readline = require("readline");
 const child_process_1 = require("child_process");
 let registeredCallback = null;
 let child = null;
 let mainProcessShutdown = false;
 let initChildProcess = () => {
-    child = child_process_1.spawn('node', [__dirname + '/' + 'rc522_output.js']);
+    const tmp = path.join(__dirname, 'rc522_output.js');
+    child = child_process_1.spawn('node', [tmp]);
     let linereader = readline.createInterface(child.stdout, child.stdin);
     linereader.on('line', (rfidTagSerialNumber) => {
-        if (registeredCallback instanceof Function) {
-            registeredCallback(rfidTagSerialNumber);
+        if (!(registeredCallback instanceof Function)) {
+            return;
         }
+        registeredCallback(rfidTagSerialNumber);
     });
     child.on('close', () => {
-        if (!mainProcessShutdown) {
-            initChildProcess();
+        if (mainProcessShutdown) {
+            return;
         }
+        initChildProcess();
     });
 };
 process.once('SIGTERM', () => {

@@ -1,26 +1,33 @@
-import * as readline from 'readline';
 import { spawn } from 'child_process';
+import * as path from 'path';
+import * as readline from 'readline';
 
 let registeredCallback = null;
 let child = null;
 let mainProcessShutdown = false;
 
 let initChildProcess = () => {
-  child = spawn('node', [__dirname + '/' + 'rc522_output.js']);
+  const tmp = path.join(__dirname, 'rc522_output.js');
+  child = spawn('node', [tmp]);
+
   let linereader = readline.createInterface(child.stdout, child.stdin);
 
   linereader.on('line', (rfidTagSerialNumber) => {
-    if (registeredCallback instanceof Function) {
-      registeredCallback(rfidTagSerialNumber);
+    if (!(registeredCallback instanceof Function)) {
+      return;
     }
+
+    registeredCallback(rfidTagSerialNumber);
   });
 
   child.on('close', () => {
-    if (!mainProcessShutdown) {
-      initChildProcess();
+    if (mainProcessShutdown) {
+      return;
     }
+
+    initChildProcess();
   });
-}
+};
 
 process.once('SIGTERM', () => {
   process.exit(0);
