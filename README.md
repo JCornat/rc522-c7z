@@ -1,7 +1,7 @@
 # rc522-c7z
 Node.js package for Rapsberry Pi & RC522 RFID Reader combo, with TypeScript support.
 
-Package entirely based on [ocsacesar](https://github.com/ocsacesar/rc522) and [sbrinkmann](https://github.com/sbrinkmann/rc522-rfid)'s work.
+Package based on [ocsacesar](https://github.com/ocsacesar/rc522) and [sbrinkmann](https://github.com/sbrinkmann/rc522-rfid)'s work.
 
 ## Installation
 - Plug RFID Reader to Raspberry Pi according to this table :
@@ -16,21 +16,19 @@ Package entirely based on [ocsacesar](https://github.com/ocsacesar/rc522) and [s
      8 (SDA)       |         24          
 ```
 
-- Install GCC compiler 
+- Install GCC compiler
 ```
 sudo apt-get update
 sudo apt-get install build-essential
 ```
 
-- Enable SPI in raspi-config (Interfacing Options > P4 SPI)
+- Enable SPI in raspi-config (Interfacing Options > SPI)
 ```
 sudo raspi-config
-# goto 5 Interfacing Options  Configure connections to peripherals
 sudo shutdown -r now
-cat /boot/config.txt | more
 ```
 
-- Install Node.js 
+- Install Node.js
 ```
 wget https://nodejs.org/dist/v8.9.0/node-v8.9.0-linux-armv6l.ta
 tar -xzf node-v8.9.0-linux-armv6l.tar.gz

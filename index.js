@@ -41,9 +41,8 @@ process.once('uncaughtException', (error) => {
     }
 });
 initChildProcess();
-function default_1(callback) {
+function listen(callback) {
     registeredCallback = callback;
 }
-exports.default = default_1;
-;
+exports.listen = listen;
 //# sourceMappingURL=index.js.map

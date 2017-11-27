@@ -52,6 +52,6 @@ process.once('uncaughtException', (error) => {
 
 initChildProcess();
 
-export default function (callback) {
+export function listen(callback) {
   registeredCallback = callback;
-};
+}
