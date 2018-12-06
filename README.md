@@ -63,16 +63,16 @@ npm install --save rc522-c7z
 ```
 var rc522 = require('rc522-c7z');
 
-rc522((serial) => {
-	console.log(serial);
+rc522.listen(serial => {
+  console.log(serial);
 });
 ```
 
 ### For TypeScript
 ```
-import rc522 from 'rc522-c7z';
+import { listen } from 'rc522-c7z';
 
-rc522((serial) => {
-	console.log(serial);
+listen(serial => {
+  console.log(serial);
 });
 ```
